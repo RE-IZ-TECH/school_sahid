@@ -1,0 +1,31 @@
+<odoo>
+
+    <menuitem id="school_root_menu"
+              name="School"
+              sequence="10"/>
+
+    <menuitem id="students_menu"
+              name="Students"
+              parent="school_root_menu"
+              action="action_students"
+              sequence="10"/>
+
+    <menuitem id="teachers_menu"
+              name="Teachers"
+              parent="school_root_menu"
+              action="action_teachers"
+              sequence="20"/>
+
+    <menuitem id="career_menu"
+              name="Careers"
+              parent="school_root_menu"
+              action="action_careers"
+              sequence="30"/>
+
+    <menuitem id="subjects_menu"
+              name="Subjects"
+              parent="school_root_menu"
+              action="action_subjects"
+              sequence="40"/>
+
+</odoo>
