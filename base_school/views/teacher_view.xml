@@ -1,5 +1,23 @@
 <odoo>
 
+    <record id = "view_teacher_search" model="ir.ui.view">
+        <field name = "name">sh.teacher.search</field>
+        <field name = "model">sh.teacher</field>
+        <field name = "arch" type = "xml">
+            <search>
+                <field name = "code"/>
+                <field name = "name"/>
+                <field name = "school_id"/>
+
+                <group expand = "0" string = "Group by">
+                    <filter name = "group_school"
+                    string = "School"
+                    context="{'group_by':'school_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="view_teacher_list" model="ir.ui.view">
         <field name="name">sh.teacher.list</field>
         <field name="model">sh.teacher</field>
@@ -8,6 +26,8 @@
                 <field name="code"/>
                 <field name="name"/>
                 <field name="age"/>
+                <field name="partner_id"/>
+                <field name="school_id" readonly="1"/>
             </list>
         </field>
     </record>
@@ -22,8 +42,16 @@
                         <field name="code"/>
                         <field name="name"/>
                         <field name="age"/>
+                        <field name="partner_id"/>
+                        <field name="school_id" readonly="1"/>
                     </group>
                 </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -32,6 +60,7 @@
         <field name="name">Teachers</field>
         <field name="res_model">sh.teacher</field>
         <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_teacher_search"/>
     </record>
 
 </odoo>

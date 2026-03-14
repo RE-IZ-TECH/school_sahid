@@ -1,0 +1,31 @@
+<odoo>
+
+    <record id="seq_student" model="ir.sequence">
+        <field name="name">Student Sequence</field>
+        <field name="code">sh.student</field>
+        <field name="prefix">STD</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_teacher" model="ir.sequence">
+        <field name="name">Teacher Sequence</field>
+        <field name="code">sh.teacher</field>
+        <field name="prefix">TCH</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_career" model="ir.sequence">
+        <field name="name">Career Sequence</field>
+        <field name="code">sh.career</field>
+        <field name="prefix">CRR</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_subject" model="ir.sequence">
+        <field name="name">Subject Sequence</field>
+        <field name="code">sh.subject</field>
+        <field name="prefix">SUB</field>
+        <field name="padding">4</field>
+    </record>
+
+</odoo>
