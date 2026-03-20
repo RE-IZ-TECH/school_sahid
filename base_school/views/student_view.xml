@@ -1,23 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id = "view_student_search" model="ir.ui.view">
-        <field name = "name">sh.student.search</field>
-        <field name = "model">sh.student</field>
-        <field name = "arch" type = "xml">
-            <search>
-                <field name = "code"/>
-                <field name = "name"/>
-                <field name = "school_id"/>
 
-                <group expand = "0" string = "Group by">
-                    <filter name = "group_school"
-                    string = "School"
+    <!-- VISTA DE BUSQUEDA -->
+    <record id="view_student_search" model="ir.ui.view">
+        <field name="name">sh.student.search</field>
+        <field name="model">sh.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="school_id"/>
+
+                <!-- FILTRO DE BUSQUEDA -->
+                <group expand="0" string="Group by">
+                    <filter name="group_school"
+                    string="School"
                     context="{'group_by':'school_id'}"/>
                 </group>
             </search>
         </field>
     </record>
 
-
+    <!-- VISTA DE LISTA -->
     <record id="view_student_list" model="ir.ui.view">
         <field name="name">sh.student.list</field>
         <field name="model">sh.student</field>
@@ -32,25 +36,34 @@
         </field>
     </record>
 
+    <!-- VISTA DE FORMULARIO -->
     <record id="view_student_form" model="ir.ui.view">
         <field name="name">sh.student.form</field>
         <field name="model">sh.student</field>
         <field name="arch" type="xml">
             <form>
+                <!-- Header de botones para crear, editar borradores, etc -->
+                <header/>
                 <sheet>
-                    <group>
-                        <field name="code"/>
-                        <field name="name"/>
-                        <field name="age"/>
-                        <field name="partner_id"/>
-                        <field name="school_id" readonly="1"/>
+                    <!-- Div usado para smart buttons -->
+                    <div/>
+                    <!-- Como buena practica añadir nombre y ID  a los div y grupos -->
+                    <div class="oe_title">
+                        <h2>
+                            <field class="oe_inline" name="code"/> - <field class="oe_inline" name="name" placeholder="Name eg: Josué Sahid Hernández Díaz"/>
+                        </h2>
+                    </div>
+                    <group id="student_group_general">
+                        <group id="group_general_one">
+                            <field name="age" widget="integer"/>
+                        </group>
+                        <group id="group_general_two">
+                            <field name="partner_id"/>
+                            <field name="school_id" readonly="1"/>
+                        </group>
                     </group>
                 </sheet>
-                        <div class="oe_chatter">
-                            <field name="message_follower_ids"/>
-                            <field name="activity_ids"/>
-                            <field name="message_ids"/>
-                        </div>
+                <chatter/>
             </form>
         </field>
     </record>

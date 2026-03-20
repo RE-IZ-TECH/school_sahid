@@ -1,23 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id = "view_subject_search" model="ir.ui.view">
-        <field name = "name">sh.subject.search</field>
-        <field name = "model">sh.subject</field>
-        <field name = "arch" type = "xml">
+    <!-- VISTA DE BUSQUEDA -->
+    <record id="view_subject_search" model="ir.ui.view">
+        <field name="name">sh.subject.search</field>
+        <field name="model">sh.subject</field>
+        <field name="arch" type="xml">
             <search>
-                <field name = "code"/>
-                <field name = "name"/>
+                <field name="code"/>
+                <field name="name"/>
                 <field name="school_id"/>
 
-                <group expand = "0" string = "Group by">
-                    <filter name = "group_school"
-                    string = "School"
-                    context="{'group_by':'school_id'}"/>
+                <!-- FILTRO DE GROUP BY -->
+                <group expand="0" string="Group by">
+                    <filter name="group_school"
+                            string="School"
+                            context="{'group_by':'school_id'}"/>
                 </group>
             </search>
         </field>
     </record>
 
+    <!-- VISTA DE LISTA -->
     <record id="view_subject_list" model="ir.ui.view">
         <field name="name">sh.subject.list</field>
         <field name="model">sh.subject</field>
@@ -32,31 +36,45 @@
         </field>
     </record>
 
+    <!-- VISTA DE FORMULARIO -->
     <record id="view_subject_form" model="ir.ui.view">
         <field name="name">sh.subject.form</field>
         <field name="model">sh.subject</field>
         <field name="arch" type="xml">
             <form>
+                <!-- Header estándar -->
+                <header/>
                 <sheet>
+                    <!-- Titulo -->
+                    <div class="oe_title">
+                        <h2>
+                            <field class="oe_inline" name="code"/> -
+                            <field class="oe_inline" name="name" placeholder="Subject name"/>
+                        </h2>
+                    </div>
+                    <!-- Información general -->
+                    <group id="subject_group_general">
+                        <group id="group_general_one">
+                            <field name="career_id"/>
+                        </group>
 
-                    <group>
-                        <field name="code"/>
-                        <field name="name"/>
-                        <field name="career_id"/>
-                        <field name="school_id" readonly="1"/>
+                        <group id="group_general_two">
+                            <field name="active"/>
+                            <field name="school_id" readonly="1"/>
+                        </group>
                     </group>
-
-                    <group>
+                    <!-- Descripción -->
+                    <group id="subject_group_description">
                         <field name="description"/>
-                        <field name="active"/>
                     </group>
-
                 </sheet>
+                <!-- CHATTER -->
+                <chatter/>
             </form>
         </field>
     </record>
 
-
+    <!-- ACCIÓN -->
     <record id="action_subjects" model="ir.actions.act_window">
         <field name="name">Subjects</field>
         <field name="res_model">sh.subject</field>
